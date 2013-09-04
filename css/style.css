@@ -1,0 +1,20 @@
+#share-me {
+display:block;
+margin-bottom: 40px;
+}
+
+#share-me ul li{
+  display: inline;
+  margin: 5px;
+}
+.share-left 
+{ float : left;
+ margin : 0 !important;
+}
+.share-right
+{ float : right; 
+}
+#share-me a {
+text-decoration: none;
+cursor: auto;
+}

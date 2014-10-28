@@ -12,77 +12,37 @@
   Version: 1.0.2
  */
 
-$siteurl = get_option('siteurl');
-define('SM_FOLDER', dirname(plugin_basename(__FILE__)));
-define('SM_URL', $siteurl . '/wp-content/plugins/' . SM_FOLDER);
-define('SM_FILE_PATH', dirname(__FILE__));
+ 
+define('SM_FOLDER', dirname(plugin_basename(__FILE__))); 
+define('SM_URL', plugin_dir_url( __FILE__ ) );
+define('SM_FILE_PATH', plugin_dir_path(__FILE__));
 define('SM_THEMES_PATH', SM_FILE_PATH . '/images/');
-wp_enqueue_style('sm_style', SM_URL . '/css/style.css');
-wp_enqueue_script('sm_script', SM_URL . '/js/scripts.js');
-
 
 global $wpdb;
 $pro_table_prefix = $wpdb->prefix . 'sm_';
 define('SM_TABLE_PREFIX', $pro_table_prefix);
 
-register_activation_hook(__FILE__, 'sm_install');
-register_deactivation_hook(__FILE__, 'sm_uninstall');
+add_action('wp_enqueue_scripts', 'sm_add_style_script');
 
-function sm_install() {
-    global $wpdb;
-    $table = SM_TABLE_PREFIX . "social_list";
-    $structure = "CREATE TABLE $table (
-        id INT(9) NOT NULL AUTO_INCREMENT,
-        name VARCHAR(80) NOT NULL,
-        status INT NOT NULL, 
-	UNIQUE KEY id (id)
-    );";
-    $wpdb->query($structure);
-    // Populate table 
-    $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'facebook', '1');");
-    $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'twitter', '1');");
-    $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'googleplus', '1');");
-    $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'tumblr', '1');");
-    $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'linkedin', '1');");
-    $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'flickr', '1');");
-    $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'blogger', '1');");
-
-
-
-    $table = SM_TABLE_PREFIX . "config";
-    $structure = "CREATE TABLE $table (
-        id INT(9) NOT NULL AUTO_INCREMENT,
-        theme VARCHAR(32) NOT NULL,
-        h_pos VARCHAR(32) NOT NULL,
-        v_pos VARCHAR(32) NOT NULL,
-        size INT NOT NULL,        
-	UNIQUE KEY id (id)
-    );";
-    $wpdb->query($structure);
-    $wpdb->query("INSERT INTO $table  (`id`, `theme`, `h_pos`, `v_pos`, `size`) VALUES (NULL, 'cercle', 'left' , 'up', 32);");
+function sm_add_style_script() {
+    wp_enqueue_style('sm_style', plugins_url('css/style.css', __FILE__));
+    wp_enqueue_script('sm_script', plugins_url('/js/scripts.js', __FILE__));
 }
 
-function sm_uninstall() {
-    global $wpdb;
-    $table = SM_TABLE_PREFIX . "config";
-    $structure = "drop table if exists $table";
-    $wpdb->query($structure);
 
-    $table = SM_TABLE_PREFIX . "social_list";
-    $structure = "drop table if exists $table";
-    $wpdb->query($structure);
-}
+register_activation_hook(__FILE__, array('shareMe', 'sm_activation'));
+register_deactivation_hook(__FILE__, array('shareMe', 'sm_deactivation'));
+
+require_once( SM_FILE_PATH . 'class.shareMe.php' );
+
+
+
 
 add_action('admin_menu', 'sm_admin_menu');
 
 function sm_admin_menu() {
-    add_menu_page(
-            "Share Me", "Share Me", 8, __FILE__, "sm_admin_menu_list", SM_URL . "/css/images/logo_small.png"
-    );
-}
 
-function sm_admin_menu_list() {
-    include 'admin-share-me.php';
+    add_menu_page('Share Me', 'Share Me', 'manage_options', 'share-me/admin-share-me.php', '', plugins_url('css/images/logo_small.png', __FILE__), 100);
 }
 
 function sm_getSocialShare($content) {
@@ -161,7 +121,7 @@ function sm_getLink($type) {
     }
 }
 
-function sm_get_fbimage() {
+function sm_get_post_image() {
     global $post;
 
     $args = array(
@@ -170,16 +130,18 @@ function sm_get_fbimage() {
         'post_parent' => $post->ID
     );
     $images = get_posts($args);
+    $src = array();
     foreach ($images as $image) {
         $src[] = wp_get_attachment_url($image->ID, array(120, 120));
     }
-
-    $fbimage = $src [0];
-
-    if (empty($fbimage)) {
-        $fbimage = SM_URL . '/css/images/logo_big.png';
+    if ($src) {
+        $postImage = $src [0];
     }
-    echo '<meta property="og:image" content="' . $fbimage . '"/>';
+
+    if (empty($postImage)) {
+        $postImage = SM_URL . '/css/images/logo_big.png';
+    }
+    echo '<meta property="og:image" content="' . $postImage . '"/>';
 }
 
-add_action('wp_head', 'sm_get_fbimage', 5);
+add_action('wp_head', 'sm_get_post_image', 5);

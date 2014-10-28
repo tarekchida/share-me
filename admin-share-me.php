@@ -4,7 +4,8 @@ $theme_list = array();
 
 $directories = glob(SM_THEMES_PATH . '*', GLOB_ONLYDIR);
 foreach ($directories as $directory) {
-    $theme_list[] = end(explode('/', $directory));
+    $directoryName = explode('/', $directory);
+    $theme_list[] = end($directoryName);
 }
 
 if (isset($_POST['theme'])) {
@@ -24,8 +25,8 @@ if (isset($_POST['theme'])) {
 }
 ?>
 <div class="wrap">  
-<?php echo "<h2>" . __('Dashboard') . "</h2>"; ?>  
-<?php echo "<h3>" . __('Social network list') . "</h2>"; ?>  
+    <?php echo "<h2>" . __('Dashboard') . "</h2>"; ?>  
+    <?php echo "<h3>" . __('Social network list') . "</h2>"; ?>  
 
     <form method="post" action="" id="social_list">
         <table class="widefat page fixed" cellspacing="0"  >
@@ -39,41 +40,41 @@ if (isset($_POST['theme'])) {
                         <strong>Status</strong>
                     </td>
                 </tr>
-<?php
-global $wpdb;
-$sql = "SELECT *FROM " . SM_TABLE_PREFIX . "social_list where  1";
-$socials = $wpdb->get_results($sql);
-if (count($socials) > 0) {
-    foreach ($socials as $social) {
-        $checked = ($social->status == 1) ? 'checked' : '';
-        echo "<tr>
+                <?php
+                global $wpdb;
+                $sql = "SELECT *FROM " . SM_TABLE_PREFIX . "social_list where  1";
+                $socials = $wpdb->get_results($sql);
+                if (count($socials) > 0) {
+                    foreach ($socials as $social) {
+                        $checked = ($social->status == 1) ? 'checked' : '';
+                        echo "<tr>
         <td>" . ucfirst($social->name) . "</td><td> <input " . $checked . " type='checkbox' name='status[]' value=" . $social->name . " ></td>
 	</tr>";
-    }
-}
-?>
+                    }
+                }
+                ?>
 
             </tbody>
         </table> 
 
 
-<?php echo "<h3>" . __('Panel position (Front) ') . "</h2>"; ?>  
-<?php
-global $wpdb;
-$sm_theme = null;
-$sm_h_pos = null;
-$sm_v_pos = null;
+        <?php echo "<h3>" . __('Panel position (Front) ') . "</h2>"; ?>  
+        <?php
+        global $wpdb;
+        $sm_theme = null;
+        $sm_h_pos = null;
+        $sm_v_pos = null;
 
-$sql = "SELECT *FROM " . SM_TABLE_PREFIX . "config where  1";
-$data = $wpdb->get_results($sql);
-foreach ($data as $item) {
+        $sql = "SELECT *FROM " . SM_TABLE_PREFIX . "config where  1";
+        $data = $wpdb->get_results($sql);
+        foreach ($data as $item) {
 
-    $sm_theme = $item->theme;
-    $sm_h_pos = $item->h_pos;
-    $sm_v_pos = $item->v_pos;
-    $sm_size = $item->size;
-}
-?>
+            $sm_theme = $item->theme;
+            $sm_h_pos = $item->h_pos;
+            $sm_v_pos = $item->v_pos;
+            $sm_size = $item->size;
+        }
+        ?>
         <table class="widefat page fixed" cellspacing="0"  >
 
             <tbody>
@@ -99,15 +100,15 @@ foreach ($data as $item) {
             </tbody>
         </table> 
 
-<?php echo "<h3>" . __('Theme collection ') . "</h2>"; ?>       
+        <?php echo "<h3>" . __('Theme collection ') . "</h2>"; ?>       
 
         <table class="widefat page fixed" cellspacing="0"  >
 
             <tbody>
-<?php foreach ($theme_list as $theme): ?>
+                <?php foreach ($theme_list as $theme): ?>
                     <tr>
                         <td valign="middle"  >
-                    <?php echo ucfirst($theme) ?> </td><td> <input   <?php echo ($sm_theme == $theme) ? 'checked' : '' ?>  type="radio" name="theme" value="<?php echo $theme ?>">    </td>
+                            <?php echo ucfirst($theme) ?> </td><td> <input   <?php echo ($sm_theme == $theme) ? 'checked' : '' ?>  type="radio" name="theme" value="<?php echo $theme ?>">    </td>
                         <td>
                             <?php foreach ($socials as $social): ?>
                                 <img src=  "<?php echo SM_URL ?>/images/<?php echo $theme ?>/<?php echo $social->name ?>.png"  height="32 px"/>
@@ -115,7 +116,7 @@ foreach ($data as $item) {
                         </td>
                         <td></td>
                     </tr>
-<?php endforeach; ?>
+                <?php endforeach; ?>
 
             </tbody>
         </table> 

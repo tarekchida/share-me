@@ -4,12 +4,12 @@
  * @package Share-me
  */
 /*
-  Plugin Name: Share-me
+  Plugin Name: ShareMe
   Plugin URI:https://github.com/tarekchida/share-me
-  Description: Share posts on multiple Social Networks, different icons sets
+  Description: Share WP posts on multiple Social Networks with different icons sets
   Author: Tarek Chida
   Author URI: http://tarek-chida.url.ph/
-  Version: 1.0.1
+  Version: 1.0.2
  */
 
 $siteurl = get_option('siteurl');

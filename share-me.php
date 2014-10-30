@@ -16,7 +16,7 @@
 define('SM_FOLDER', dirname(plugin_basename(__FILE__)));
 define('SM_URL', plugin_dir_url(__FILE__));
 define('SM_FILE_PATH', plugin_dir_path(__FILE__));
-define('SM_THEMES_PATH', SM_FILE_PATH . '/images/');
+define('SM_THEMES_PATH', SM_FILE_PATH . '/assets/images/');
 
 global $wpdb;
 $pro_table_prefix = $wpdb->prefix . 'sm_';

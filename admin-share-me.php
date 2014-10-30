@@ -111,7 +111,7 @@ if (isset($_POST['theme'])) {
                             <?php echo ucfirst($theme) ?> </td><td> <input   <?php echo ($sm_theme == $theme) ? 'checked' : '' ?>  type="radio" name="theme" value="<?php echo $theme ?>">    </td>
                         <td>
                             <?php foreach ($socials as $social): ?>
-                                <img src=  "<?php echo SM_URL ?>/images/<?php echo $theme ?>/<?php echo $social->name ?>.png"  height="32 px"/>
+                                <img src=  "<?php echo SM_URL ?>/assets/images/<?php echo $theme ?>/<?php echo $social->name ?>.png"  height="32 px"/>
                             <?php endforeach; ?>
                         </td>
                         <td></td>

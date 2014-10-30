@@ -65,8 +65,8 @@ class shareMe {
      */
 
     public static function sm_add_style_script() {
-        wp_enqueue_style('sm_style', plugins_url('css/style.css', __FILE__));
-        wp_enqueue_script('sm_script', plugins_url('/js/scripts.js', __FILE__));
+        wp_enqueue_style('sm_style', plugins_url('/assets/css/style.css', __FILE__));
+        wp_enqueue_script('sm_script', plugins_url('/assets/js/scripts.js', __FILE__));
     }
 
     public static function sm_getSocialShare($content) {
@@ -95,7 +95,7 @@ class shareMe {
             }
         }
 
-        $path = SM_URL . '/images/' . $sm_theme . '/';
+        $path = SM_URL . '/assets/images/' . $sm_theme . '/';
 
         $shares = self::sm_createShareButtons($socialList, $path, $sm_h_pos, $sm_size);
 
@@ -168,7 +168,7 @@ class shareMe {
             $postImage = $src [0];
         }
         if (empty($postImage)) {
-            $postImage = SM_URL . 'css/images/logo_big.png';
+            $postImage = SM_URL . '/assets/css/images/logo_big.png';
         }
         echo '<meta property="og:image" content="' . $postImage . '"/>';
     }

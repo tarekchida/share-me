@@ -1,6 +1,6 @@
 
 === share-me ===    
-Contributors: tarek.chdia   
+Contributors: tarek.chida   
 Donate link:  http://tarek-chida.url.ph/    
 Tags: share, social networks, posts, icons  
 Requires at least: 3.0 or higher  

@@ -9,6 +9,7 @@
   Description: Share WP posts on multiple Social Networks with different icons sets
   Author: Tarek Chida
   Author URI: http://tarek-chida.url.ph/
+  License: GPLv2 or later
   Version: 1.1.0
  */
 

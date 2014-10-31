@@ -1,5 +1,5 @@
 
-=== share-me ===    
+<h1>=== share-me ===</h1>
 Contributors: tarek.chida   
 Donate link:  http://tarek-chida.url.ph/    
 Tags: share, social networks, posts, icons  

@@ -68,7 +68,11 @@ class shareMe {
         wp_enqueue_style('sm_style', plugins_url('/assets/css/style.css', __FILE__));
         wp_enqueue_script('sm_script', plugins_url('/assets/js/scripts.js', __FILE__));
     }
-
+    
+    /*
+     * Create sharing set
+     */	
+     
     public static function sm_getSocialShare($content) {
 
         global $wpdb;
@@ -107,7 +111,7 @@ class shareMe {
     }
 
     /*
-     * GENERATE SHARE BUTTONS
+     * Generate share buttons
      */
 
     public static function sm_createShareButtons($socialList, $path, $sm_h_pos, $sm_size) {
@@ -127,6 +131,10 @@ class shareMe {
         }
         return $shares .= "</ul></div><br/>";
     }
+    
+    /*
+     * Get sharing links
+     */
 
     public static function sm_getLink($type) {
         global $post;
@@ -148,7 +156,7 @@ class shareMe {
     }
 
     /*
-     * Set image in hrader for pot share
+     * Set image in header for post share
      */
 
     public static function sm_get_post_image() {
@@ -172,7 +180,11 @@ class shareMe {
         }
         echo '<meta property="og:image" content="' . $postImage . '"/>';
     }
-
+    
+    /*
+     * Add Share-Me to Admin menu
+     */	
+     
     public static function sm_admin_menu() {
         add_menu_page('Share Me', 'Share Me', 'manage_options', 'share-me/admin-share-me.php', '', plugins_url('css/images/logo_small.png', __FILE__), 100);
     }

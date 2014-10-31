@@ -9,7 +9,7 @@ Stable tag: 4.3
 License: GPLv2 or later 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html   
     
-<h2>Description</h2>    
+<h3>Description</h3>    
 Share-me is a simple social share plugin.        
 Share your posts on multiple Social Networks with different icons sets.     
 Share-me is able to deal with new icons sets added.     
@@ -36,12 +36,12 @@ Minimalist
 Ribbon		            	
 Simple
 
-<h2> Screenshots </h2>   
+<h3> Screenshots </h3>   
 This is the first screen shot from the Admin Pannel : `/assets/screenshot-1.png`   
 This is the second screen shot from the front Home page : `/assets/screenshot-2.png`    
 
 
-<h2> Installation </h2>       
+<h3> Installation </h3>       
 Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
  
 <h4>Can i add my own icons to the widget?</h4>   

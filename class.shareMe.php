@@ -27,8 +27,7 @@ class shareMe {
         $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 3, 'googleplus', 1));
         $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 4, 'tumblr', 1));
         $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 5, 'linkedin', 1));
-        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 6, 'flickr', 1));
-        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 7, 'blogger', 1));
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 6, 'blogger', 1));
 
         $table = SM_TABLE_PREFIX . "config";
         $structure = "CREATE TABLE  IF NOT EXISTS  $table (
@@ -128,28 +127,32 @@ class shareMe {
         }
         return $shares .= "</ul></div><br/>";
     }
-    
+
     /*
      * Get sharing links
      */
 
     public static function sm_getLink($type) {
         global $post;
+        $blogName = get_option('blogname');
         switch ($type) {
-            case 'facebook': return '<a href="http://www.facebook.com/sharer.php?u=' . apply_filters("the_permalink", get_permalink()) . '&t=' . urlencode(get_the_title()) . '" alt="Share on Facebook" title="Share on Facebook"   onclick="return smWindowpop(this.href,' . self::$popinWidth . ',' . self:: $popinHight . ')">';
+            case 'facebook': $link = '<a href="http://www.facebook.com/sharer.php?u=' . apply_filters("the_permalink", get_permalink()) . '&t=' . urlencode(get_the_title()) . '" alt="Share on Facebook" title="Share on Facebook"   onclick="return smWindowpop(this.href,' . self::$popinWidth . ',' . self:: $popinHight . ')">';
                 break;
-            case 'twitter': return '<a href="http://twitter.com/share?text=' . urlencode(get_the_title()) . '-&url=' . apply_filters("the_permalink", get_permalink()) . '&via=StadeFrance" alt="Tweet This Post" title="Tweet This Post"  onclick="return smWindowpop(this.href,' . self::$popinWidth . ',' . self::$popinHight . ')">';
+            case 'twitter': $link = '<a href="http://twitter.com/share?text=' . urlencode(get_the_title()) . '-&url=' . apply_filters("the_permalink", get_permalink()) . '&via=' . $blogName . '" alt="Tweet This Post" title="Tweet This Post"  onclick="return smWindowpop(this.href,' . self::$popinWidth . ',' . self::$popinHight . ')">';
                 break;
-            case 'googleplus': return '<a href="https://plusone.google.com/_/+1/confirm?hl=fr-FR&url=' . apply_filters("the_permalink", get_permalink()) . '" alt="Share on Google+" title="Share on Google+"  target="_blank"onclick="return smWindowpop(this.href,' . self::$popinWidth . ',' . self::$popinHight . ')">';
+            case 'googleplus': $link = '<a href="https://plusone.google.com/_/+1/confirm?hl=fr-FR&url=' . apply_filters("the_permalink", get_permalink()) . '" alt="Share on Google+" title="Share on Google+"  target="_blank" onclick="return smWindowpop(this.href,' . self::$popinWidth . ',' . self::$popinHight . ')">';
                 break;
             case 'tumblr': $thumbID = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'large');
-                return '<a href="http://www.tumblr.com/share/photo?source=' . urlencode($thumbID[0]) . '&caption=' . urlencode(get_the_title()) . '&clickthru=' . urlencode(get_permalink()) . '" title="Share on Tumblr"  onclick="return smWindowpop(this.href,' . self::$popinWidth . ',' . self::$popinHight . ')"> ';
+                $link = '<a href="http://www.tumblr.com/share/photo?source=' . urlencode($thumbID[0]) . '&caption=' . urlencode(get_the_title()) . '&clickthru=' . urlencode(get_permalink()) . '" title="Share on Tumblr"  onclick="return smWindowpop(this.href,' . self::$popinWidth . ',' . self::$popinHight . ')"> ';
                 break;
-            case 'linkedin': return '<a href="http://www.linkedin.com/shareArticle?mini=true&url=' . apply_filters("the_permalink", get_permalink()) . '&title=' . urlencode(get_the_title()) . '&source=Stadefrance" onclick="return smWindowpop(this.href, ' . self::$popinWidth . ',' . self::$popinHight . ')">';
+            case 'linkedin': $link = '<a href="http://www.linkedin.com/shareArticle?mini=true&url=' . apply_filters("the_permalink", get_permalink()) . '&title=' . urlencode(get_the_title()) . '&source=' . $blogName . '" onclick="return smWindowpop(this.href, ' . self::$popinWidth . ',' . self::$popinHight . ')">';
                 break;
-            default: return '';
+            case 'blogger': $link = '<a href="https://www.blogger.com/blog-this.g?u=' . apply_filters("the_permalink", get_permalink()) . '&n=' . urlencode(get_the_title()) . '&t=' . $blogName . '" alt="Share on Blogger" title="Share on Blogger" onclick="return smWindowpop(this.href, ' . self::$popinWidth . ',' . self::$popinHight . ')">';
+                break;
+            default: $link = '';
                 break;
         }
+        return $link;
     }
 
     /*
@@ -177,11 +180,11 @@ class shareMe {
         }
         echo '<meta property="og:image" content="' . $postImage . '"/>';
     }
-    
+
     /*
      * Add Share-Me to Admin menu
-     */	
-     
+     */
+
     public static function sm_admin_menu() {
         add_menu_page('Share Me', 'Share Me', 'manage_options', 'share-me/admin-share-me.php', '', plugins_url('/assets/css/images/logo_small.png', __FILE__), 100);
     }

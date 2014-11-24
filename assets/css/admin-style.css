@@ -1,0 +1,8 @@
+/* SM admin style */
+.sm-plugin-logo {
+    position: absolute;
+    width: 100px;
+    right: 50px;
+    border: 1px solid #555;
+    top: 100px;
+}

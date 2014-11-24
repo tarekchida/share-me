@@ -10,7 +10,7 @@
   Author: Tarek Chida
   Author URI: http://tarek-chida.url.ph/
   License: GPLv2 or later
-  Version: 1.1.0
+  Version: 1.2.0
  */
 
 define('SM_FOLDER', dirname(plugin_basename(__FILE__)));
@@ -28,7 +28,9 @@ register_deactivation_hook(__FILE__, array('shareMe', 'sm_deactivation'));
 
 require_once( SM_FILE_PATH . 'class.shareMe.php' );
 
-add_action('wp_enqueue_scripts', array('shareMe', 'sm_add_style_script') );
+add_action('wp_enqueue_scripts', array('shareMe', 'sm_add_style_script'));
 add_action('admin_menu', array('shareMe', 'sm_admin_menu'));
 add_filter('the_content', array('shareMe', 'sm_getSocialShare'));
 add_action('wp_head', array('shareMe', 'sm_get_post_image'), 5);
+add_action('admin_enqueue_scripts', array('shareMe', 'sm_admin_style_script'));
+

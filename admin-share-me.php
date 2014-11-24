@@ -11,21 +11,19 @@ foreach ($directories as $directory) {
 if (isset($_POST['theme'])) {
 
     global $wpdb;
-    $sql = "UPDATE " . SM_TABLE_PREFIX . "social_list Set status=0 ;";
-    $wpdb->query($sql);
+    $wpdb->update(SM_TABLE_PREFIX . "social_list", array('status' => 0));
 
     foreach ($_POST['status'] as $theme) {
-        $sql = "UPDATE " . SM_TABLE_PREFIX . "social_list Set status=1 WHERE name='" . $theme . "';";
-        $wpdb->query($sql);
+        $wpdb->update(SM_TABLE_PREFIX . "social_list", array('status' => 1), array('name' => $theme));
     }
 
-    $sql = "UPDATE " . SM_TABLE_PREFIX . "config Set theme='" . $_POST['theme'] . "' , v_pos='" . $_POST['v_pos'] . "' , h_pos='" . $_POST['h_pos'] . "' , size='" . $_POST['size'] . "' ;";
-    $wpdb->query($sql);
+    $wpdb->update(SM_TABLE_PREFIX . "config", array('theme' => $_POST['theme'], 'v_pos' => $_POST['v_pos'], 'h_pos' => $_POST['h_pos'], 'size' => $_POST['size']));
     add_action('save_post', 'notify');
 }
 ?>
 <div class="wrap">  
-    <?php echo "<h2>" . __('Dashboard') . "</h2>"; ?>  
+    <?php echo "<img class='sm-plugin-logo' src='" . plugins_url('/assets/css/images/logo_big.png', __FILE__) . "'>"; ?>  
+    <?php echo "<h2> SM " . __('Dashboard') . "</h2>"; ?>  
     <?php echo "<h3>" . __('Social network list') . "</h2>"; ?>  
 
     <form method="post" action="" id="social_list">
@@ -42,8 +40,7 @@ if (isset($_POST['theme'])) {
                 </tr>
                 <?php
                 global $wpdb;
-                $sql = "SELECT *FROM " . SM_TABLE_PREFIX . "social_list where  1";
-                $socials = $wpdb->get_results($sql);
+                $socials = $wpdb->get_results($wpdb->prepare("SELECT * FROM " . SM_TABLE_PREFIX . "social_list WHERE %d", 1));
                 if (count($socials) > 0) {
                     foreach ($socials as $social) {
                         $checked = ($social->status == 1) ? 'checked' : '';
@@ -65,8 +62,7 @@ if (isset($_POST['theme'])) {
         $sm_h_pos = null;
         $sm_v_pos = null;
 
-        $sql = "SELECT *FROM " . SM_TABLE_PREFIX . "config where  1";
-        $data = $wpdb->get_results($sql);
+        $data = $wpdb->get_results($wpdb->prepare("SELECT * FROM " . SM_TABLE_PREFIX . "config WHERE %d", 1));
         foreach ($data as $item) {
 
             $sm_theme = $item->theme;

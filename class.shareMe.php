@@ -22,14 +22,13 @@ class shareMe {
         $wpdb->query($structure);
 
         // Populate table 
-        $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'facebook', '1');");
-        $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'twitter', '1');");
-        $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'googleplus', '1');");
-        $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'tumblr', '1');");
-        $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'linkedin', '1');");
-        $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'flickr', '1');");
-        $wpdb->query("INSERT INTO $table  (`id`, `name`, `status`) VALUES (NULL, 'blogger', '1');");
-
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 1, 'facebook', 1));
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 2, 'twitter', 1));
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 3, 'googleplus', 1));
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 4, 'tumblr', 1));
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 5, 'linkedin', 1));
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 6, 'flickr', 1));
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 7, 'blogger', 1));
 
         $table = SM_TABLE_PREFIX . "config";
         $structure = "CREATE TABLE  IF NOT EXISTS  $table (
@@ -41,7 +40,7 @@ class shareMe {
 	UNIQUE KEY id (id)
     );";
         $wpdb->query($structure);
-        $wpdb->query("INSERT INTO $table  (`id`, `theme`, `h_pos`, `v_pos`, `size`) VALUES (NULL, 'cercle', 'left' , 'up', 32);");
+        $wpdb->query($wpdb->prepare("INSERT INTO $table  (`id`, `theme`, `h_pos`, `v_pos`, `size`) VALUES ( %d, %s,%s,%s, %d )", 1, 'cercle', 'left', 'up', 32));
     }
 
     /*
@@ -69,6 +68,10 @@ class shareMe {
         wp_enqueue_script('sm_script', plugins_url('/assets/js/scripts.js', __FILE__));
     }
 
+    public static function sm_admin_style_script() {
+        wp_enqueue_style('admin_css', plugins_url('/assets/css/admin-style.css', __FILE__), false, '1.0.0');
+    }
+
     public static function sm_getSocialShare($content) {
 
         global $wpdb;
@@ -78,8 +81,7 @@ class shareMe {
         $sm_size = "32";
         $socialList = array();
 
-        $sql = "SELECT *FROM " . SM_TABLE_PREFIX . "config where  1";
-        $data = $wpdb->get_results($sql);
+        $data = $wpdb->get_results($wpdb->prepare("SELECT * FROM " . SM_TABLE_PREFIX . "config WHERE %d", 1));
         foreach ($data as $item) {
 
             $sm_theme = $item->theme;
@@ -87,8 +89,7 @@ class shareMe {
             $sm_v_pos = $item->v_pos;
             $sm_size = $item->size;
         }
-        $sql = "SELECT *FROM " . SM_TABLE_PREFIX . "social_list where  1";
-        $socials = $wpdb->get_results($sql);
+        $socials = $wpdb->get_results($wpdb->prepare("SELECT * FROM " . SM_TABLE_PREFIX . "social_list WHERE %d", 1));
         if (count($socials) > 0) {
             foreach ($socials as $social) {
                 $socialList[] = $social;
@@ -174,7 +175,7 @@ class shareMe {
     }
 
     public static function sm_admin_menu() {
-        add_menu_page('Share Me', 'Share Me', 'manage_options', 'share-me/admin-share-me.php', '', plugins_url('css/images/logo_small.png', __FILE__), 100);
+        add_menu_page('Share Me', 'Share Me', 'manage_options', 'share-me/admin-share-me.php', '', plugins_url('/assets/css/images/logo_small.png', __FILE__), 100);
     }
 
 }

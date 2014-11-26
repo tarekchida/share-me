@@ -22,12 +22,12 @@ Vertical position Before/After post
 Icons size 16 px / 20 px / 32 px    
 
 <h4>Included social Networks :</h4>   
-Facebook	
-Twitter	
-Googleplus	
-Tumblr	
-Linkedin 
-Blogger
+Facebook	    
+Twitter 	
+Googleplus  	
+Tumblr  	
+Linkedin     
+Blogger 
 
 <h4>Included Icon Sets :</h4>  
 Cercle		            	

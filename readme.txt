@@ -15,12 +15,12 @@ Share your posts on multiple Social Networks with different icons sets.
 Share-me is able to deal with new icons sets added.     
 No ads no sniffing scripts... just a simple and a clean way to share posts! and its Responsive  :)  
 
-You can choose :    
+<strong>You can choose :</strong>    
 Horisental position Left/Right    
 Vertical position Before/After post    
 Icons size 16 px / 20 px / 32 px    
 
-Included social Networks :   
+<strong>Included social Networks :</strong>   
 Facebook	
 Twitter	
 Googleplus	
@@ -29,7 +29,7 @@ Linkedin
 Flickr	
 Blogger
 
-Included Icon Sets :  
+<strong>Included Icon Sets :</strong>  
 Cercle		            	
 Elegent		            	
 Minimalist		            	
@@ -37,13 +37,13 @@ Ribbon
 Simple
 
 == Screenshots ==
-This is the first screen shot from the Admin Pannel : `/assets/screenshot-1.png`   
-This is the second screen shot from the front Home page : `/assets/screenshot-2.png`    
+1. This is the first screen shot from the Admin Pannel  
+2. This is the second screen shot from the front Home page  
 
 
  == Installation ==     
 Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
  
-Can i add my own icons to the widget?   
+<strong>Can i add my own icons to the widget?</strong>   
 Yes. Using an FTP client, navigate to the "iconset: folder under the wp-content/plugins/share-me/images in your wordpress installation.  Now Create a new folder for your custom iconset, naming it accordingly.  Add your icons (.png format, preferably 32px x 32px size). Refresh.  The new iconset will be appear in the themes selection in the plugin settings.       
  

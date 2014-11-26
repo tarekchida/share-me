@@ -1,7 +1,8 @@
 
 <h2>share-me</h2>   
 Contributors: tarek.chida   
-Donate link:  http://tarek-chida.url.ph/    
+Profil link : http://tarek-chida.url.ph/    
+Wordpress link:  https://wordpress.org/plugins/share-me/
 Tags: share, social networks, posts, icons  
 Requires at least: 3.0 or higher  
 Tested up to: 4.0   
@@ -25,8 +26,7 @@ Facebook
 Twitter	
 Googleplus	
 Tumblr	
-Linkedin	
-Flickr	
+Linkedin 
 Blogger
 
 <h4>Included Icon Sets :</h4>  
@@ -35,10 +35,6 @@ Elegent
 Minimalist		            	
 Ribbon		            	
 Simple
-
-<h3> Screenshots </h3>   
-This is the first screen shot from the Admin Pannel : `/assets/screenshot-1.png`   
-This is the second screen shot from the front Home page : `/assets/screenshot-2.png`    
 
 
 <h3> Installation </h3>       

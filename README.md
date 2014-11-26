@@ -2,7 +2,7 @@
 <h2>share-me</h2>   
 Contributors: tarek.chida   
 Profil link : http://tarek-chida.url.ph/    
-Wordpress link:  https://wordpress.org/plugins/share-me/
+Wordpress link:  https://wordpress.org/plugins/share-me/    
 Tags: share, social networks, posts, icons  
 Requires at least: 3.0 or higher  
 Tested up to: 4.0   

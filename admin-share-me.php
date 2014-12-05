@@ -11,13 +11,14 @@ foreach ($directories as $directory) {
 if (isset($_POST['theme'])) {
 
     global $wpdb;
-    $wpdb->update(SM_TABLE_PREFIX . "social_list", array('status' => 0));
-
+    $wpdb->update(SM_TABLE_PREFIX . "social_list", array('status' => 0),array('status' => 1));
+ 
     foreach ($_POST['status'] as $theme) {
         $wpdb->update(SM_TABLE_PREFIX . "social_list", array('status' => 1), array('name' => $theme));
     }
+ 
+    $wpdb->update(SM_TABLE_PREFIX . "config", array('theme' => $_POST['theme'], 'v_pos' => $_POST['v_pos'], 'h_pos' => $_POST['h_pos'], 'size' => $_POST['size']),array('id' => 1));
 
-    $wpdb->update(SM_TABLE_PREFIX . "config", array('theme' => $_POST['theme'], 'v_pos' => $_POST['v_pos'], 'h_pos' => $_POST['h_pos'], 'size' => $_POST['size']));
     add_action('save_post', 'notify');
 }
 ?>

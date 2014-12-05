@@ -22,28 +22,30 @@ Icons size 16 px / 20 px / 32 px
 
 <strong>Included social Networks :</strong>   
 Facebook	
-Twitter	
-Googleplus	
-Tumblr	
-Linkedin	
-Flickr	
-Blogger
+Twitter     
+Googleplus       
+Tumblr      
+Linkedin        
+Blogger     
 
 <strong>Included Icon Sets :</strong>  
-Cercle		            	
-Elegent		            	
-Minimalist		            	
-Ribbon		            	
-Simple
+Apricum			          	
+Cercle				          	
+Elegent				          	
+Leaf				          	
+Minimalist				          	
+Ribbon				          	
+Simple		
 
 == Screenshots ==
 1. This is the first screen shot from the Admin Pannel  
 2. This is the second screen shot from the front Home page  
+3. This is the third screen shot from the front Home page on mobile sceen
 
 
  == Installation ==     
 Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
  
-<strong>Can i add my own icons to the widget?</strong>   
-Yes. Using an FTP client, navigate to the "iconset: folder under the wp-content/plugins/share-me/images in your wordpress installation.  Now Create a new folder for your custom iconset, naming it accordingly.  Add your icons (.png format, preferably 32px x 32px size). Refresh.  The new iconset will be appear in the themes selection in the plugin settings.       
+<strong>Can i add my own icons to the plugin?</strong>   
+Yes. Using an FTP client, navigate to the "iconset: folder under the wp-content/plugins/share-me/assets/images in your wordpress installation.  Now Create a new folder for your custom iconset, naming it accordingly.  Add your icons (.png format, preferably 32px x 32px size). Refresh.  The new iconset will be appear in the themes selection in the plugin settings.       
  

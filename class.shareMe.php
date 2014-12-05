@@ -22,12 +22,12 @@ class shareMe {
         $wpdb->query($structure);
 
         // Populate table 
-        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 1, 'facebook', 1));
-        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 2, 'twitter', 1));
-        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 3, 'googleplus', 1));
-        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 4, 'tumblr', 1));
-        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 5, 'linkedin', 1));
-        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 6, 'blogger', 1));
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 2, 'facebook', 1));
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 3, 'twitter', 1));
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 4, 'googleplus', 1));
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 5, 'tumblr', 1));
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 6, 'linkedin', 1));
+        $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 7, 'blogger', 1));
 
         $table = SM_TABLE_PREFIX . "config";
         $structure = "CREATE TABLE  IF NOT EXISTS  $table (

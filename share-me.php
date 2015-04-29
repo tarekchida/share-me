@@ -10,7 +10,7 @@
   Author: Tarek Chida
   Author URI: http://tarek-chida.url.ph/
   License: GPLv2 or later
-  Version: 1.2.2
+  Version: 1.3.0
  */
 
 define('SM_FOLDER', dirname(plugin_basename(__FILE__)));

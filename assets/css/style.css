@@ -5,7 +5,7 @@
     margin-bottom: 40px;
 }
 #share-me ul li{
-    display: inline;
+    display: inline-block;
     margin: 5px;
 }
 .share-left 

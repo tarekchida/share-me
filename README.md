@@ -1,7 +1,7 @@
 
 <h2>share-me</h2>   
 Contributors: tarek.chida   
-Donate link:  http://tarek-chida.url.ph/    
+Donate link:  http://tchida.net
 Tags: share, social networks, posts, icons  
 Requires at least: 3.0 or higher  
 Tested up to: 4.2.1     

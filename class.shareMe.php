@@ -6,7 +6,7 @@ class shareMe {
     static $popinHight = 433;
 
     /*
-     *  PLUGIN INSTALL 
+     *  PLUGIN INSTALL
      */
 
     public static function sm_activation() {
@@ -16,12 +16,12 @@ class shareMe {
         $structure = "CREATE TABLE  IF NOT EXISTS  $table (
         id INT(9) NOT NULL AUTO_INCREMENT,
         name VARCHAR(80) NOT NULL,
-        status INT NOT NULL, 
+        status INT NOT NULL,
 	UNIQUE KEY id (id)
          );";
         $wpdb->query($structure);
 
-        // Populate table 
+        // Populate table
         $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 2, 'facebook', 1));
         $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 3, 'twitter', 1));
         $wpdb->query($wpdb->prepare("INSERT INTO $table (`id`, `name`, `status`)VALUES ( %d, %s, %d )", 4, 'googleplus', 1));
@@ -35,7 +35,7 @@ class shareMe {
         theme VARCHAR(32) NOT NULL,
         h_pos VARCHAR(32) NOT NULL,
         v_pos VARCHAR(32) NOT NULL,
-        size INT NOT NULL,        
+        size INT NOT NULL,
 	UNIQUE KEY id (id)
     );";
         $wpdb->query($structure);
@@ -43,7 +43,7 @@ class shareMe {
     }
 
     /*
-     *  PLUGIN UNINSTALL 
+     *  PLUGIN UNINSTALL
      */
 
     public static function sm_deactivation() {

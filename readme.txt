@@ -1,11 +1,11 @@
 
 === share-me ===
 Contributors: tarek.chida 
-Donate link:  http://tarek-chida.url.ph/
+Donate link:  http://tchida.net
 Tags: share, social networks, posts, icons
 Requires at least: 3.0 or higher
-Tested up to: 4.0  
-Stable tag: 4.3
+Tested up to: 4.6.1       
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ Share-me is able to deal with new icons sets added.
 No ads no sniffing scripts... just a simple and a clean way to share posts! and its Responsive  :)  
 
 <strong>You can choose :</strong>    
-Horisental position Left/Right    
+Horizontal position Left/Right    
 Vertical position Before/After post    
 Icons size 16 px / 20 px / 32 px    
 
@@ -35,7 +35,9 @@ Elegent
 Leaf				          	
 Minimalist				          	
 Ribbon				          	
-Simple		
+Simple	
+Square
+Shaded	
 
 == Screenshots ==
 1. This is the first screen shot from the Admin Pannel  

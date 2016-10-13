@@ -8,9 +8,9 @@
   Plugin URI:https://github.com/tarekchida/share-me
   Description: Share WP posts on multiple Social Networks with different icons sets
   Author: Tarek Chida
-  Author URI: http://tarek-chida.url.ph/
+  Author URI: http://tchida.net
   License: GPLv2 or later
-  Version: 1.2.2
+  Version: 1.4.0
  */
 
 define('SM_FOLDER', dirname(plugin_basename(__FILE__)));

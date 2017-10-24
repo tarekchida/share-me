@@ -25,7 +25,7 @@ if (isset($_POST['theme'])) {
 <div class="wrap">  
     <?php echo "<img class='sm-plugin-logo' src='" . plugins_url('/assets/css/images/logo_big.png', __FILE__) . "'>"; ?>  
     <?php echo "<h2> SM " . __('Dashboard') . "</h2>"; ?>  
-    <?php echo "<h3>" . __('Social network list') . "</h2>"; ?>  
+    <?php echo "<h3>" . __('Social network list') . "</h3>"; ?>  
 
     <form method="post" action="" id="social_list">
         <table class="widefat page fixed" cellspacing="0"  >
@@ -97,7 +97,7 @@ if (isset($_POST['theme'])) {
             </tbody>
         </table> 
 
-        <?php echo "<h3>" . __('Theme collection ') . "</h2>"; ?>       
+        <?php echo "<h3>" . __('Theme collection ') . "</h3>"; ?>       
 
         <table class="widefat page fixed" cellspacing="0"  >
 
